@@ -5,7 +5,7 @@ import Header from "./component/header";
 import SlideBar from "./component/slideBar";
 import ProductBox from "./component/productBox";
 import ProductFeatured from "./component/productFeatured";
-import ProductMain from "./component/productMain";
+import ShowCaseTwo from "./component/product/ShowCaseTwo";
 import Testimonials from "./component/testimonials";
 import Blog from "./component/blog";
 import Footer from "./component/footer";
@@ -42,7 +42,7 @@ function App() {
 
 
                   <div className="container">
-                      <ProductMain/>
+                      <ShowCaseTwo/>
                   </div>
 
                   <div className="container">

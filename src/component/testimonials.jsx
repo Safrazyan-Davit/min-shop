@@ -1,153 +1,90 @@
 import React from 'react';
+import {TestimonialInfo} from "../base";
 
-function Testimonials() {
-
-
-
+function Testimonials(props) {
     return (
-        <div>
+        <div className="testimonials-box">
 
 
-                <div className="testimonials-box">
+            <div className="testimonial">
 
+                <h2 className="title">{TestimonialInfo.section1.title}</h2>
 
+                <div className="testimonial-card">
 
-                    <div className="testimonial">
+                    <img src={TestimonialInfo.section1.image} alt="alan doe"
+                         className="testimonial-banner" width="80" height="80"/>
 
-                        <h2 className="title">testimonial</h2>
+                    <p className="testimonial-name">{TestimonialInfo.section1.name}</p>
 
-                        <div className="testimonial-card">
+                    <p className="testimonial-title">{TestimonialInfo.section1.position}</p>
 
-                            <img src="./assets/images/testimonial-1.jpg" alt="alan doe" className="testimonial-banner"
-                                 width="80" height="80"/>
+                    <img
+                        src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/1760704621734-9twywah6lek-1760704621416_ztpu3t_quotes.svg"
+                        alt="quotation" className="quotation-img"
+                        width="26"/>
 
-                            <p className="testimonial-name">Alan Doe</p>
-
-                            <p className="testimonial-title">CEO & Founder Invision</p>
-
-                            <img src="./assets/images/icons/quotes.svg" alt="quotation" className="quotation-img"
-                                 width="26"/>
-
-                            <p className="testimonial-desc">
-                                Lorem ipsum dolor sit amet consectetur Lorem ipsum
-                                dolor dolor sit amet.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div className="cta-container">
-
-                        <img src="./assets/images/cta-banner.jpg" alt="summer collection" className="cta-banner"/>
-
-                        <a href="#" className="cta-content">
-
-                            <p className="discount">25% Discount</p>
-
-                            <h2 className="cta-title">Summer collection</h2>
-
-                            <p className="cta-text">Starting @ $10</p>
-
-                            <button className="cta-btn">Shop now</button>
-
-                        </a>
-
-                    </div>
-
-
-
-
-                    <div className="service">
-
-                        <h2 className="title">Our Services</h2>
-
-                        <div className="service-container">
-
-                            <a href="#" className="service-item">
-
-                                <div className="service-icon">
-                                    <ion-icon name="boat-outline"></ion-icon>
-                                </div>
-
-                                <div className="service-content">
-
-                                    <h3 className="service-title">Worldwide Delivery</h3>
-                                    <p className="service-desc">For Order Over $100</p>
-
-                                </div>
-
-                            </a>
-
-                            <a href="#" className="service-item">
-
-                                <div className="service-icon">
-                                    <ion-icon name="rocket-outline"></ion-icon>
-                                </div>
-
-                                <div className="service-content">
-
-                                    <h3 className="service-title">Next Day delivery</h3>
-                                    <p className="service-desc">UK Orders Only</p>
-
-                                </div>
-
-                            </a>
-
-                            <a href="#" className="service-item">
-
-                                <div className="service-icon">
-                                    <ion-icon name="call-outline"></ion-icon>
-                                </div>
-
-                                <div className="service-content">
-
-                                    <h3 className="service-title">Best Online Support</h3>
-                                    <p className="service-desc">Hours: 8AM - 11PM</p>
-
-                                </div>
-
-                            </a>
-
-                            <a href="#" className="service-item">
-
-                                <div className="service-icon">
-                                    <ion-icon name="arrow-undo-outline"></ion-icon>
-                                </div>
-
-                                <div className="service-content">
-
-                                    <h3 className="service-title">Return Policy</h3>
-                                    <p className="service-desc">Easy & Free Return</p>
-
-                                </div>
-
-                            </a>
-
-                            <a href="#" className="service-item">
-
-                                <div className="service-icon">
-                                    <ion-icon name="ticket-outline"></ion-icon>
-                                </div>
-
-                                <div className="service-content">
-
-                                    <h3 className="service-title">30% money back</h3>
-                                    <p className="service-desc">For Order Over $100</p>
-
-                                </div>
-
-                            </a>
-
-                        </div>
-
-                    </div>
+                    <p className="testimonial-desc">
+                        {TestimonialInfo.section1.text}
+                    </p>
 
                 </div>
 
             </div>
+
+
+            <div className="cta-container">
+
+                <img src={TestimonialInfo.section2.image} alt="summer collection" className="cta-banner"/>
+
+                <a href="#" className="cta-content">
+
+                    <p className="discount">{TestimonialInfo.section2.percent}</p>
+
+                    <h2 className="cta-title">{TestimonialInfo.section2.title}</h2>
+
+                    <p className="cta-text">{TestimonialInfo.section2.text}</p>
+
+                    <button className="cta-btn">Shop now</button>
+
+                </a>
+
+            </div>
+
+
+            <div className="service">
+
+                <h2 className="title">Our Services</h2>
+
+                <div className="service-container">
+                    {TestimonialInfo.section3.map(res => (
+
+                        <a href="#" className="service-item" key={res.id}>
+
+                            <div className="service-icon">
+                                <img
+                                    src={res.icon}
+                                    alt="quotation" className="quotation-img"
+                                    width="26"/>
+                            </div>
+
+                            <div className="service-content">
+
+                                <h3 className="service-title">{res.title}</h3>
+                                <p className="service-desc">{res.desc}</p>
+
+                            </div>
+
+                        </a>
+
+                    ))}
+
+
+                </div>
+
+            </div>
+
+        </div>
 
     );
 }

@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import productjson from '../../products_500.json'
+import Catgoryname from "./catgoryname";
+import DiscountPrice from "./discountPrice";
+import Addproduct from "../details/addproduct";
 
 function Showcase({tag}) {
     const [state,setState] = useState([])
@@ -33,16 +36,13 @@ function Showcase({tag}) {
                                 <div className="showcase-content">
 
                                     <a href="#">
-                                        <h4 className="showcase-title">{res.title}</h4>
+                                        <h4 className="showcase-title">{res.name}</h4>
                                     </a>
 
-                                    <a href="#" className="showcase-category">Clothes</a>
+                                    <Catgoryname id={res.category_id} />
 
-                                    <div className="price-box">
-                                        <p className="price">$45.00</p>
-                                        <del>$12.00</del>
-                                    </div>
-
+                                  <DiscountPrice price={res.price} old_price={res.old_price}/>
+                                  <Addproduct id={res.id}/>
                                 </div>
 
                             </div>
@@ -57,7 +57,7 @@ function Showcase({tag}) {
                 </div>
 
             </div>
-            );
+    );
             }
 
 export default Showcase;

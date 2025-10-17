@@ -1,5 +1,6 @@
 import React from 'react';
-
+import cart from '../assets/images/cart.png'
+import favorite from '../assets/images/favourite.png'
 function Header(props) {
     return (
 
@@ -88,17 +89,15 @@ function Header(props) {
 
                         <div className="header-user-actions">
 
-                            <button className="action-btn">
-                                <ion-icon name="person-outline"></ion-icon>
-                            </button>
+
 
                             <button className="action-btn">
-                                <ion-icon name="heart-outline"></ion-icon>
+                                <img src={favorite} alt="" width={30}/>
                                 <span className="count">0</span>
                             </button>
 
                             <button className="action-btn">
-                                <ion-icon name="bag-handle-outline"></ion-icon>
+                                <img src={cart} alt="" width={30}/>
                                 <span className="count">0</span>
                             </button>
 
@@ -620,21 +619,10 @@ function Header(props) {
                                 </a>
                             </li>
 
-                            <li>
-                                <a href="#" className="social-link">
-                                    <ion-icon name="logo-twitter"></ion-icon>
-                                </a>
-                            </li>
 
                             <li>
                                 <a href="#" className="social-link">
-                                    <ion-icon name="logo-instagram"></ion-icon>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" className="social-link">
-                                    <ion-icon name="logo-linkedin"></ion-icon>
+                                    <img src={cart} alt=""/>
                                 </a>
                             </li>
 
