@@ -207,7 +207,7 @@ function Footer() {
 
                             <li className="footer-nav-item flex">
                                 <div className="icon-box">
-                                    <ion-icon name="location-outline"></ion-icon>
+                                    <i className="fa fa-map-marker"></i>
                                 </div>
 
                                 <address className="content">
@@ -218,7 +218,7 @@ function Footer() {
 
                             <li className="footer-nav-item flex">
                                 <div className="icon-box">
-                                    <ion-icon name="call-outline"></ion-icon>
+                                    <i className="fa fa-phone"></i>
                                 </div>
 
                                 <a href="tel:+607936-8058" className="footer-nav-link">(607) 936-8058</a>
@@ -226,7 +226,7 @@ function Footer() {
 
                             <li className="footer-nav-item flex">
                                 <div className="icon-box">
-                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <i className="fa fa-phone"></i>
                                 </div>
 
                                 <a href="mailto:example@gmail.com" className="footer-nav-link">example@gmail.com</a>
@@ -280,7 +280,7 @@ function Footer() {
 
                     <div className="container">
 
-                        <img src="./assets/images/payment.png" alt="payment method" className="payment-img"/>
+                        <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/1760880516058-v8yl95a5pdj-1760880514228_xblboi_payment.png" alt="payment method" className="payment-img"/>
 
                         <p className="copyright">
                             Copyright &copy; <a href="#">Anon</a> all rights reserved.

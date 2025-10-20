@@ -11,6 +11,8 @@ import Blog from "./component/blog";
 import Footer from "./component/footer";
 import Scrollbar from "./component/menu/scrollbar";
 import Categories from "./component/categories";
+import 'font-awesome/css/font-awesome.min.css';
+
 
 
 function App() {

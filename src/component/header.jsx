@@ -1,6 +1,6 @@
 import React from 'react';
 import cart from '../assets/images/cart.png'
-import favorite from '../assets/images/favourite.png'
+import Favorite from "./favorite/favorite";
 function Header(props) {
     return (
 
@@ -14,25 +14,25 @@ function Header(props) {
 
                             <li>
                                 <a href="#" className="social-link">
-                                    <ion-icon name="logo-facebook"></ion-icon>
+                                    <i className="fa fa-facebook-official"></i>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="#" className="social-link">
-                                    <ion-icon name="logo-twitter"></ion-icon>
+                                    <i className="fa fa-twitter"></i>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="#" className="social-link">
-                                    <ion-icon name="logo-instagram"></ion-icon>
+                                    <i className="fa fa-instagram"></i>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="#" className="social-link">
-                                    <ion-icon name="logo-linkedin"></ion-icon>
+                                    <i className="fa fa-linkedin-square"></i>
                                 </a>
                             </li>
 
@@ -73,7 +73,7 @@ function Header(props) {
                     <div className="container">
 
                         <a href="#" className="header-logo">
-                            <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36"/>
+                            <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/1760800925469-x5qod2xg47n-1760800925228_k1f2n5_logo.svg" alt="Anon's logo" width="120" height="36"/>
                         </a>
 
                         <div className="header-search-container">
@@ -87,21 +87,13 @@ function Header(props) {
 
                         </div>
 
-                        <div className="header-user-actions">
+
+
+                      <Favorite/>
 
 
 
-                            <button className="action-btn">
-                                <img src={favorite} alt="" width={30}/>
-                                <span className="count">0</span>
-                            </button>
 
-                            <button className="action-btn">
-                                <img src={cart} alt="" width={30}/>
-                                <span className="count">0</span>
-                            </button>
-
-                        </div>
 
                     </div>
 
