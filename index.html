@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Զամբյուղ</title>
+    <style>
+        :root{
+            --bg:#f6f7fb;
+            --card:#ffffff;
+            --text:#1f2937;
+            --muted:#6b7280;
+            --brand:#0ea5e9;
+            --line:#e5e7eb;
+            --success:#16a34a;
+            --radius:16px;
+            --shadow:0 8px 24px rgba(0,0,0,.06);
+        }
+        *{box-sizing:border-box}
+        html,body{margin:0}
+        body{
+            font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+            color:var(--text);
+            background:var(--bg);
+            line-height:1.5;
+        }
+        .container{
+            max-width:1100px;
+            margin:40px auto;
+            padding:0 16px;
+            display:grid;
+            grid-template-columns: 1fr 360px;
+            gap:24px;
+        }
+        @media (max-width: 920px){
+            .container{grid-template-columns: 1fr}
+        }
+
+        /* Card */
+        .card{
+            background:var(--card);
+            border-radius:var(--radius);
+            box-shadow:var(--shadow);
+            border:1px solid var(--line);
+        }
+        .card h2{
+            margin:0;
+            padding:18px 20px;
+            border-bottom:1px solid var(--line);
+            font-size:22px;
+        }
+
+        /* Items */
+        .items{padding:10px}
+        .item{
+            display:grid;
+            grid-template-columns: 92px 1fr 160px;
+            gap:16px;
+            padding:12px;
+            border-radius:14px;
+            border:1px solid var(--line);
+            margin:10px;
+            align-items:center;
+            background:#fff;
+        }
+        @media (max-width:720px){
+            .item{grid-template-columns: 86px 1fr}
+            .item .price-col{grid-column: 1 / -1; justify-content:space-between; display:flex; gap:12px}
+        }
+        .thumb{
+            width:92px;height:92px;border-radius:12px;object-fit:cover;border:1px solid var(--line)
+        }
+        .title{font-weight:600;margin:0 0 6px 0}
+        .meta{font-size:13px;color:var(--muted)}
+        .tag{display:inline-block;font-size:12px;color:#065f46;background:#ecfdf5;border:1px solid #d1fae5;padding:3px 8px;border-radius:999px;margin-top:6px}
+
+        /* Qty control (pure CSS visuals) */
+        .qty{
+            display:flex;align-items:center;gap:8px;
+        }
+        .btn{
+            border:1px solid var(--line);
+            background:#fff;
+            padding:0 12px;
+            height:36px;
+            min-width:36px;
+            border-radius:10px;
+            font-size:18px;
+            cursor:default; /* only visual; no JS here */
+            user-select:none;
+        }
+        .qty input{
+            width:56px;height:36px;border:1px solid var(--line);
+            border-radius:10px;text-align:center;font-weight:600;
+        }
+        .price-col .unit{font-size:14px;color:var(--muted)}
+        .price-col .total{font-weight:700;margin-top:4px}
+
+        .remove{
+            color:#ef4444;
+            text-decoration:none;
+            font-size:13px;
+        }
+
+        /* Summary */
+        .summary{padding:18px 20px}
+        .row{
+            display:flex;justify-content:space-between;align-items:center;
+            padding:10px 0;border-bottom:1px dashed var(--line);
+            font-size:15px;
+        }
+        .row:last-child{border-bottom:none}
+        .row .value{font-weight:700}
+        .muted{color:var(--muted);font-size:14px}
+
+        .delivery{
+            padding:14px 0;border-bottom:1px dashed var(--line);
+        }
+        .delivery h3{margin:0 0 10px 0;font-size:16px}
+        .del-opt{
+            display:flex;align-items:center;justify-content:space-between;
+            border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px;background:#fff;
+        }
+        .del-opt input{accent-color:var(--brand)}
+        .del-name{font-weight:600}
+        .del-price{font-weight:700}
+
+        .checkout{
+            margin-top:14px;
+            display:flex;gap:10px;flex-direction:column;
+        }
+        .pay-btn{
+            appearance:none;border:0;border-radius:12px;padding:14px 16px;
+            background:linear-gradient(180deg,#38bdf8,#0ea5e9);
+            color:#fff;font-weight:700;font-size:16px;
+            box-shadow:0 8px 18px rgba(14,165,233,.25);
+            cursor:default; /* no action without JS */
+        }
+        .secure{
+            display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px
+        }
+        .badge{
+            font-size:12px;background:#eef2ff;color:#3730a3;border:1px solid #c7d2fe;border-radius:999px;padding:4px 8px
+        }
+
+        .totals-big{
+            display:flex;justify-content:space-between;align-items:center;
+            padding:12px 0 4px 0;
+        }
+        .totals-big .label{font-size:18px;font-weight:700}
+        .totals-big .amount{font-size:22px;font-weight:800}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Cart items -->
+    <div class="card">
+        <h2>🛒 Զամբյուղ</h2>
+        <div class="items">
+            <!-- Item 1 -->
+            <div class="item">
+                <img class="thumb" src="https://images.unsplash.com/photo-1544717305-996b815c338c?q=80&w=1200&auto=format&fit=crop" alt="JavaScript Գիրք">
+                <div>
+                    <p class="title">JavaScript Գիրք</p>
+                    <p class="meta">Կոդ — #BK-1024 • Մատչելի</p>
+                    <span class="tag">Գիտելիք</span>
+                </div>
+                <div class="price-col">
+                    <div class="qty" aria-label="Քանակ">
+                        <button class="btn" aria-hidden="true">−</button>
+                        <input type="number" min="1" value="1" />
+                        <button class="btn" aria-hidden="true">+</button>
+                    </div>
+                    <div class="unit">Միավորի գին՝ 9 500 ֏</div>
+                    <div class="total">Ընդամենը՝ 9 500 ֏</div>
+                    <div style="margin-top:6px;"><a class="remove" href="#">Հեռացնել</a></div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="item">
+                <img class="thumb" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="React Դասընթաց Տոմս">
+                <div>
+                    <p class="title">React Դասընթաց Տոմս</p>
+                    <p class="meta">Սկիզբ — 27 Հոկտ. • Եր. 19:30</p>
+                    <span class="tag">Դասընթաց</span>
+                </div>
+                <div class="price-col">
+                    <div class="qty" aria-label="Քանակ">
+                        <button class="btn" aria-hidden="true">−</button>
+                        <input type="number" min="1" value="1" />
+                        <button class="btn" aria-hidden="true">+</button>
+                    </div>
+                    <div class="unit">Միավորի գին՝ 120 000 ֏</div>
+                    <div class="total">Ընդամենը՝ 120 000 ֏</div>
+                    <div style="margin-top:6px;"><a class="remove" href="#">Հեռացնել</a></div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Ամփոփում</h2>
+        <div class="summary">
+
+            <div class="row">
+                <div>Միջագումար</div>
+                <div class="value">129 500 ֏</div>
+            </div>
+
+            <div class="delivery">
+                <h3>Առաքում</h3>
+
+                <label class="del-opt">
+                    <div>
+                        <input type="radio" name="delivery" checked />
+                        <span class="del-name">Ստանդարտ (2–4 օր)</span>
+                        <div class="muted">Քաղաքի ներսում</div>
+                    </div>
+                    <div class="del-price">1 200 ֏</div>
+                </label>
+
+                <label class="del-opt">
+                    <div>
+                        <input type="radio" name="delivery" />
+                        <span class="del-name">Էքսպրես (24 ժամ)</span>
+                        <div class="muted">Արագ առաքում</div>
+                    </div>
+                    <div class="del-price">3 000 ֏</div>
+                </label>
+            </div>
+
+            <div class="totals-big">
+                <div class="label">Ընդհանուր</div>
+                <div class="amount">130 700 ֏</div>
+            </div>
+            <div class="muted">* Գները ներառում են ԱԱՀ (եթե կիրառելի է)</div>
+
+            <div class="checkout">
+                <button class="pay-btn">Ավարտել գնումը</button>
+                <div class="secure">
+                    <span class="badge">🔒 Անվտանգ վճարում</span>
+                    <span>Visa / MasterCard / Իդրամ</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>
+
+</body>
+</html>

@@ -1,11 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import productjson from '../../products_500.json'
 import Catgoryname from "./catgoryname";
 import DiscountPrice from "./discountPrice";
 import Addproduct from "../details/addproduct";
+import CartContext from "../../context/cartContext";
+import cart from "../../assets/images/cart.png";
+import favorite from "../../assets/images/favourite.png";
+import {car} from "ionicons/icons";
 
 function Showcase({tag}) {
     const [state,setState] = useState([])
+    const {cartState,setCartState}=useContext(CartContext)
     useEffect(()=>{
       Promise.resolve(productjson).then(res=>{
 
@@ -42,12 +47,29 @@ function Showcase({tag}) {
                                     <Catgoryname id={res.category_id} />
 
                                   <DiscountPrice price={res.price} old_price={res.old_price}/>
-                                  <Addproduct id={res.id}/>
+                                    <div className={"d-flex"}>
+                                        <img src={cart} alt="cart" width="25" onClick={()=>{
+                                            setCartState({
+                                                ...cartState,
+                                                total:cartState.total+res.price,
+                                                value:[
+                                                    ...cartState.value,
+                                                    {
+                                                        id:Date.now(),
+                                                        product_id:res.id,
+                                                        name:res.name,
+                                                        price:res.price,
+                                                        image:res.image_url,
+                                                        qty:1
+                                                    }
+                                                ]
+                                            })
+                                        }}/>
+                                        <img src={favorite} alt="favorite" width="25"/>
+                                    </div>
                                 </div>
 
                             </div>
-
-
 
 
                         ))

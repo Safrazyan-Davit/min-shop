@@ -1,9 +1,16 @@
-import React from 'react';
-import cart from '../assets/images/cart.png'
-import Favorite from "./favorite/favorite";
-function Header(props) {
-    return (
+import React, {useContext, useState} from 'react';
 
+import cart from "../assets/images/cart.png";
+import favorite from "../assets/images/favourite.png";
+import PopUp from "./popUp/popUp";
+import CartContext from "../context/cartContext";
+
+function Header(props) {
+    const [activePopup, setActivePopup] = useState(null);
+    const {cartState}=useContext(CartContext)
+
+    return (
+        <>
             <header>
 
                 <div className="header-top">
@@ -73,7 +80,9 @@ function Header(props) {
                     <div className="container">
 
                         <a href="#" className="header-logo">
-                            <img src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/1760800925469-x5qod2xg47n-1760800925228_k1f2n5_logo.svg" alt="Anon's logo" width="120" height="36"/>
+                            <img
+                                src="https://pub-141831e61e69445289222976a15b6fb3.r2.dev/1760800925469-x5qod2xg47n-1760800925228_k1f2n5_logo.svg"
+                                alt="Anon's logo" width="120" height="36"/>
                         </a>
 
                         <div className="header-search-container">
@@ -86,13 +95,17 @@ function Header(props) {
                             </button>
 
                         </div>
+                        <div className="header-user-actions">
+                            <button className="action-btn" onClick={() => setActivePopup('favorite')}>
+                                <img src={favorite} alt="" width={30}/>
+                                <span className="count">0</span>
+                            </button>
 
-
-
-                      <Favorite/>
-
-
-
+                            <button className="action-btn" onClick={() => setActivePopup('cart')}>
+                                <img src={cart} alt="" width={30}/>
+                                <span className="count">{cartState.value.length}</span>
+                            </button>
+                        </div>
 
 
                     </div>
@@ -625,6 +638,10 @@ function Header(props) {
                 </nav>
 
             </header>
+
+            {activePopup&&<PopUp activePopup={activePopup} setActivePopup={setActivePopup} />}
+
+        </>
 
 
     );
